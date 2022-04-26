@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./mount/mlpy-3.5.0"
+    ]
+}
