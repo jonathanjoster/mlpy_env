@@ -19,9 +19,11 @@ RUN CFLAGS="-fexceptions -ftree-vectorize" ./configure --prefix=/usr/local --dis
 # conda create
 WORKDIR /workspace
 RUN conda update -n base -c defaults conda && \
-    conda create -yn mlpy python=3.6 numpy scipy matplotlib && \
+    conda create -yn mlpy python=3.6 && \
     conda init && \
-    echo "conda activate mlpy" >> ~/.bashrc
-# RUN conda install -y numpy scipy matplotlib
+    echo "conda activate mlpy" >> ~/.bashrc && \
+    conda config --add channels conda-forge && \
+    conda config --set channel_priority strict
+RUN conda install -y numpy scipy matplotlib
 
 WORKDIR mlpy-3.5.0
